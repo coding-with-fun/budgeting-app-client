@@ -6,12 +6,12 @@ import rootReducer from "./reducers/rootReducer";
 
 const logger = createLogger({
     duration: true,
-    diff: true,
+    // diff: true,
 });
 
 const store = createStore(
     rootReducer,
-    composeWithDevTools(applyMiddleware(thunk, logger))
+    composeWithDevTools(applyMiddleware(thunk))
 );
 
 export default store;

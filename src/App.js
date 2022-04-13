@@ -29,7 +29,6 @@ const App = (props) => {
 
 const mapStateToProps = (state) => {
     return {
-        accountDetails: state.accountDetails.accountDetails,
         fetchingAccountDetailsFlag: state.accountDetails.loading,
         error: state.accountDetails.error,
     };

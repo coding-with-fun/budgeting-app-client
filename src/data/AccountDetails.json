@@ -1,7 +1,67 @@
 {
-    "incomeCategories": ["Salary", "Refund", "Other"],
-    "expenseCategories": ["Investment", "Leisure"],
-    "expenseSubCategories": {
-        "investment": ["FD", "Mutual Fund", "Stocks"]
+    "accounts": {
+        "savings": [
+            {
+                "key": 0,
+                "title": "SBI",
+                "balance": "0"
+            },
+            {
+                "key": 1,
+                "title": "Axis Bank",
+                "balance": "0"
+            },
+            {
+                "key": 2,
+                "title": "FI Bank",
+                "balance": "0"
+            }
+        ],
+
+        "credit-cards": [
+            {
+                "key": 0,
+                "title": "UNI Card",
+                "outstanding balance": 0
+            }
+        ]
+    },
+
+    "envelops": {
+        "monthly": {
+            "start date": "1st",
+            "list": [
+                {
+                    "key": 0,
+                    "name": "FD",
+                    "outstanding amount": 1000,
+                    "filled amount": 0,
+                    "due date": 1649846609
+                },
+                {
+                    "key": 1,
+                    "name": "PPF",
+                    "outstanding amount": 1000,
+                    "filled amount": 0,
+                    "due date": 1649846609
+                },
+                {
+                    "key": 2,
+                    "name": "Mutual Fund",
+                    "outstanding amount": 1000,
+                    "filled amount": 0
+                }
+            ]
+        },
+
+        "others": [
+            {
+                "key": 0,
+                "name": "Car",
+                "outstanding amount": 1000,
+                "filled amount": 0,
+                "duration": 36
+            }
+        ]
     }
 }

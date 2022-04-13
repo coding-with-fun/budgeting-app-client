@@ -1,3 +1,4 @@
+import Accounts from "./private/Accounts";
 import Dashboard from "./private/Dashboard";
 
-export { Dashboard };
+export { Accounts, Dashboard };
