@@ -4,6 +4,7 @@ import { connect } from "react-redux";
 import { BrowserRouter } from "react-router-dom";
 import { handleFetchAccountDetails } from "./actions/AccountDetailsAction";
 import FullPageLoader from "./components/FullPageLoader";
+import NavAppBar from "./components/Navbar/NavAppBar";
 import IndexRouter from "./routes/IndexRouter";
 
 const App = (props) => {
@@ -16,6 +17,8 @@ const App = (props) => {
     return (
         <Box>
             {props.fetchingAccountDetailsFlag ? <FullPageLoader /> : null}
+
+            <NavAppBar />
 
             <BrowserRouter>
                 <IndexRouter />
