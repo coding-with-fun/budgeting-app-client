@@ -24,13 +24,25 @@ const AccountDetails = ({ setCurrentView, data }) => {
     }, [detailsChanged]);
 
     const handleChangeDetails = (event, key, field, list) => {
+        setDetailsChanged(true);
+        let input = _.get(event, "target.value");
+
+        const checkNumberRegex = new RegExp(/^\d+$/);
+        if (field === "balance" && input && !checkNumberRegex.test(input)) {
+            return true;
+        }
+
+        if (field === "balance" && input.charAt(0) === "0") {
+            input = input.substring(1);
+        }
+
         const localAccountData = { ...accounts };
-        localAccountData[list][key][field] = _.get(event, "target.value");
+        localAccountData[list][key][field] = input;
 
         setAccounts({ ...localAccountData });
     };
 
-    const AccountsList = ({ list }) => {
+    const AccountsList = ({ list, listName }) => {
         return list.map((account) => {
             return (
                 <Box
@@ -52,7 +64,7 @@ const AccountDetails = ({ setCurrentView, data }) => {
                                 event,
                                 _.get(account, "key"),
                                 "title",
-                                "savings"
+                                listName
                             )
                         }
                         fullWidth
@@ -60,13 +72,18 @@ const AccountDetails = ({ setCurrentView, data }) => {
 
                     <TextField
                         variant="outlined"
-                        value={
-                            _.get(account, "balance") ||
-                            _.get(account, "outstanding balance")
-                        }
+                        value={_.get(account, "balance")}
                         sx={{
                             flex: 0.5,
                         }}
+                        onChange={(event) =>
+                            handleChangeDetails(
+                                event,
+                                _.get(account, "key"),
+                                "balance",
+                                listName
+                            )
+                        }
                         fullWidth
                     />
                 </Box>
@@ -106,7 +123,7 @@ const AccountDetails = ({ setCurrentView, data }) => {
                 >
                     Savings
                 </Typography>
-                <AccountsList list={accounts.savings} />
+                {AccountsList({ list: accounts.savings, listName: "savings" })}
             </Box>
         </Box>
     );

@@ -22,7 +22,7 @@
             {
                 "key": 0,
                 "title": "UNI Card",
-                "outstanding balance": 0
+                "balance": "0"
             }
         ]
     },
