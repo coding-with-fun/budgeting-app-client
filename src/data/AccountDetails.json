@@ -1,0 +1,7 @@
+{
+    "incomeCategories": ["Salary", "Refund", "Other"],
+    "expenseCategories": ["Investment", "Leisure"],
+    "expenseSubCategories": {
+        "investment": ["FD", "Mutual Fund", "Stocks"]
+    }
+}

@@ -1,12 +1,43 @@
-import { Box, Typography } from "@mui/material";
-import React from "react";
+import { Box } from "@mui/material";
+import React, { useEffect } from "react";
+import { connect } from "react-redux";
+import { BrowserRouter } from "react-router-dom";
+import { handleFetchAccountDetails } from "./actions/AccountDetailsAction";
+import FullPageLoader from "./components/FullPageLoader";
+import IndexRouter from "./routes/IndexRouter";
 
-const App = () => {
+const App = (props) => {
+    useEffect(() => {
+        props.fetchAccountDetails();
+
+        // eslint-disable-next-line
+    }, []);
+
     return (
         <Box>
-            <Typography>App</Typography>
+            {props.fetchingAccountDetailsFlag ? <FullPageLoader /> : null}
+
+            <BrowserRouter>
+                <IndexRouter />
+            </BrowserRouter>
         </Box>
     );
 };
 
-export default App;
+const mapStateToProps = (state) => {
+    return {
+        accountDetails: state.accountDetails.accountDetails,
+        fetchingAccountDetailsFlag: state.accountDetails.loading,
+        error: state.accountDetails.error,
+    };
+};
+
+const mapDispatchToProps = (dispatch) => {
+    return {
+        fetchAccountDetails: () => {
+            dispatch(handleFetchAccountDetails());
+        },
+    };
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(App);
